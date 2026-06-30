@@ -1,0 +1,26 @@
+{
+  "name": "task_manager_webapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "frontend": "npm --prefix frontend run dev",
+    "backend": "npm --prefix backend run dev",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AshleshaNemade/Task_Manager_WebApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AshleshaNemade/Task_Manager_WebApp/issues"
+  },
+  "homepage": "https://github.com/AshleshaNemade/Task_Manager_WebApp#readme",
+  "dependencies": {
+    "concurrently": "^10.0.3"
+  }
+}

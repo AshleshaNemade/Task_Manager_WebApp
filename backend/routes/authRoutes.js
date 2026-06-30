@@ -21,4 +21,19 @@ router.get("/profile", protect, (req, res) => {
 
 });
 
+const authorizeRoles = require("../middleware/roleMiddleware");
+
+router.get(
+  "/admin",
+  protect,
+  authorizeRoles("admin"),
+  (req, res) => {
+
+    res.json({
+      message: "Welcome Admin"
+    });
+
+  }
+);
+
 module.exports = router;

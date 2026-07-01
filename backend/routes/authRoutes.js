@@ -7,8 +7,15 @@ const {
   login,
 } = require("../controllers/authController");
 
-router.post("/register", register);
-router.post("/login", login);
+const validate = require("../middleware/errorMiddleware");
+
+const {
+  registerValidation,
+  loginValidation,
+} = require("../validators/authValidator");
+
+router.post("/register", registerValidation, validate, register);
+router.post("/login", loginValidation, validate, login);
 
 const { protect } = require("../middleware/authMiddleware");
 
@@ -35,5 +42,7 @@ router.get(
 
   }
 );
+
+
 
 module.exports = router;

@@ -22,11 +22,11 @@ CREATE TABLE task_assignments (
     PRIMARY KEY(task_id,user_id)
 );
 
-CREATE TABLE activity_logs(
+CREATE TABLE activity_logs (
     log_id SERIAL PRIMARY KEY,
     user_id INTEGER REFERENCES users(user_id),
-    task_id INTEGER REFERENCES tasks(task_id),
-    action VARCHAR(255),
+    task_id INTEGER REFERENCES tasks(task_id) ON DELETE SET NULL,
+    action VARCHAR(255) NOT NULL,
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

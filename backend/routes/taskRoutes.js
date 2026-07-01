@@ -10,7 +10,8 @@ const {
     createNewTask,
     getTasks,
     editTask,
-    removeTask
+    removeTask,
+    getTask
 } = require("../controllers/taskController");
 
 const validate = require("../middleware/errorMiddleware");
@@ -35,5 +36,7 @@ router.delete(
     authorizeRoles("admin"),
     removeTask
 );
+
+router.get("/:id", protect, getTask);
 
 module.exports = router;

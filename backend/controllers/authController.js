@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt");
 const {
   createUser,
   findUserByEmail,
+  getAllUsers,
 } = require("../models/userModel");
 
 const generateToken = require("../utils/generateToken");
@@ -84,7 +85,29 @@ const login = async (req, res) => {
   }
 };
 
+const getUsers = async (req, res) => {
+
+    try {
+
+        const users = await getAllUsers();
+
+        res.json(users);
+
+    }
+
+    catch (error) {
+
+        res.status(500).json({
+            message: error.message
+        });
+
+    }
+
+};
+
+
 module.exports = {
   register,
   login,
+  getUsers,
 };

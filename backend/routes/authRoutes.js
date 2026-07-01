@@ -5,6 +5,7 @@ const router = express.Router();
 const {
   register,
   login,
+  getUsers,
 } = require("../controllers/authController");
 
 const validate = require("../middleware/errorMiddleware");
@@ -43,6 +44,10 @@ router.get(
   }
 );
 
-
+router.get(
+    "/users",
+    protect,
+    getUsers
+);
 
 module.exports = router;

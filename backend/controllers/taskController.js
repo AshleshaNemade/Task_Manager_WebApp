@@ -242,9 +242,40 @@ const removeTask = async (req, res) => {
 
 };
 
+const getTask = async (req, res) => {
+
+    try {
+
+        const taskId = req.params.id;
+
+        const task = await getTaskById(taskId);
+
+        if (!task) {
+
+            return res.status(404).json({
+                message: "Task not found"
+            });
+
+        }
+
+        task.assignedUsers = await getAssignedUsers(taskId);
+
+        res.json(task);
+
+    } catch (error) {
+
+        res.status(500).json({
+            message: error.message
+        });
+
+    }
+
+};
+
 module.exports = {
   createNewTask,
   getTasks,
   editTask,
-  removeTask
+  removeTask,
+  getTask
 };
